@@ -102,9 +102,6 @@ function findPathAStar(maze: MazeCell[][], start: Position, end: Position): Posi
   console.log(`   🏁 Meta: (${end.x},${end.y})`);
   console.log(`   📐 Escala: ${MAZE_SCALE.cellSize}m por celda`);
 
-  const height = maze.length;
-  const width = maze[0].length;
-
   // Listas abiertas y cerradas
   const openList: PathNode[] = [];
   const closedSet = new Set<string>();

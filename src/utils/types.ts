@@ -1,5 +1,3 @@
-import { Vector3 } from 'three';
-
 // Tipos para posiciones 3D
 export type Position3D = [number, number, number];
 

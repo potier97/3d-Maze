@@ -20,7 +20,7 @@ export const AgentVisualization: React.FC<AgentVisualizationProps> = ({
   const groupRef = useRef<Group>(null);
 
   // Solo actualizar posición sin animaciones
-  useFrame((state, delta) => {
+  useFrame(() => {
     if (!groupRef.current || !isVisible || !agentPosition) return;
 
     // Posición fija del marcador sin animaciones

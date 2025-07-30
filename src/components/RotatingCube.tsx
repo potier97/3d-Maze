@@ -7,7 +7,7 @@ import { Mesh } from 'three';
 export const RotatingCube: React.FC = () => {
   const meshRef = useRef<Mesh>(null!);
 
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     if (meshRef.current) {
       meshRef.current.rotation.x += delta;
       meshRef.current.rotation.y += delta * 0.8;

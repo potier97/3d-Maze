@@ -15,14 +15,14 @@ export const AutoModeControls: React.FC<AutoModeControlsProps> = ({
   isAutoMode,
   autoSpeed,
   onSpeedChange,
-  onToggleMode,
+  onToggleMode: _onToggleMode, // Parámetro no utilizado pero requerido por la interfaz
   pathsCompleted
 }) => {
   const speedPresets = [
     { name: 'Lento', value: MAZE_SCALE.camera.speed.slow, desc: '1.2 m/s (caminar lento)' },
     { name: 'Normal', value: MAZE_SCALE.camera.speed.normal, desc: '2.5 m/s (caminar normal)' },
-    { name: 'Rápido', value: MAZE_SCALE.camera.speed.fast, desc: '4.0 m/s (caminar rápido)' },
-    { name: 'Correr', value: MAZE_SCALE.camera.speed.run, desc: '6.0 m/s (trotar)' }
+    { name: 'Rápido', value: MAZE_SCALE.camera.speed.fast, desc: '3.5 m/s (caminar rápido)' },
+    { name: 'Correr', value: 6.0, desc: '6.0 m/s (trotar)' }
   ];
 
   if (!isAutoMode) return null;

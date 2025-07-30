@@ -29,13 +29,9 @@ export const CameraController: React.FC<CameraControllerProps> = ({
   const [isRotating, setIsRotating] = useState(false);
   const [currentCellIndex, setCurrentCellIndex] = useState(0);
   const [hasReachedGoal, setHasReachedGoal] = useState(false);
-  const [isPausing, setIsPausing] = useState(false);
   
   // Estado para la visualización del agente
   const [agentPosition, setAgentPosition] = useState<Vector3 | null>(null);
-  
-  // Referencias para pausas naturales
-  const pauseTimeRef = useRef(0);
   
   // Referencias para rotación suave
   const currentRotation = useRef(0);
@@ -104,18 +100,7 @@ export const CameraController: React.FC<CameraControllerProps> = ({
     );
   };
 
-  /**
-   * Actualiza la posición del agente virtual para visualización cenital
-   */
-  const updateAgentPosition = (cellIndex: number) => {
-    if (mazePath.length > 0 && cellIndex < mazePath.length) {
-      const currentCell = mazePath[cellIndex];
-      const worldPos = cellToWorldPosition(currentCell.x, currentCell.y);
-      setAgentPosition(worldPos);
-      
-      console.log(`📍 Agente en celda (${currentCell.x},${currentCell.y}) - Mundo: (${worldPos.x.toFixed(1)}, ${worldPos.y.toFixed(1)}, ${worldPos.z.toFixed(1)})`);
-    }
-  };
+  
 
   /**
    * Verifica si se puede mover entre dos celdas adyacentes (sin atravesar muros)
@@ -247,7 +232,7 @@ export const CameraController: React.FC<CameraControllerProps> = ({
   }, [maze, isActive]); // 🔥 REMOVIDO: isAerialView, camera - SOLO reacciona a cambios de laberinto
 
   // Bucle de animación principal
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     if (!isNavigating || mazePath.length === 0 || !isActive || hasReachedGoal) {
       return;
     }
