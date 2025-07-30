@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
-import { Scene3D, Loader } from '@/components';
+import { Loader } from '@/components';
 import { useLoading } from '@/hooks/useLoading';
 import { LOADING_CONFIG, MAZE_SCALE } from '@/utils';
 
